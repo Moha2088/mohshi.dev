@@ -4,24 +4,32 @@
 
 html {
     font-family: "Google Sans";
-    background-color: #0d0d0d;
+    background-color: #161616;
 }
 
 .main-div {
-    margin-left: 100px;
-    margin-top: 70px;
+    margin-left: 300px;
+    margin-top: 130px;
     
 }
 
 .name-div {
     color: white;
     font-size: small;
-
 }
 
 .description-div {
-    color: white;
     margin-bottom: 40px;
+    color: white;
+}
+
+.paragraph-div {
+    color: white;
+    margin-bottom: 50px;
+    font-size: small;
+    max-width: 500px;
+    line-height: 1.5;
+
 }
 
 .links-div {
