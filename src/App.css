@@ -1,0 +1,40 @@
+
+
+@import url('https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+html {
+    font-family: "Google Sans";
+    background-color: #0d0d0d;
+}
+
+.main-div {
+    margin-left: 100px;
+    margin-top: 70px;
+    
+}
+
+.name-div {
+    color: white;
+    font-size: small;
+
+}
+
+.description-div {
+    color: white;
+    margin-bottom: 40px;
+}
+
+.links-div {
+    display: flex;
+    gap: 10px;
+}
+
+.social-link {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+
+    &:hover {
+        text-decoration: underline;
+    }
+}
