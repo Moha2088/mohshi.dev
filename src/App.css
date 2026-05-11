@@ -4,7 +4,14 @@
 
 html {
     font-family: "Google Sans";
+}
+
+html[data-theme="dark"] {
     background-color: #161616;
+}
+
+html[data-theme="light"] {
+    background-color: #ffffff;
 }
 
 .main-div {
@@ -14,22 +21,42 @@ html {
 }
 
 .name-div {
-    color: white;
     font-size: small;
+}
+
+html[data-theme="dark"] .name-div {
+    color: white;
+}
+
+html[data-theme="light"] .name-div {
+    color: #000000;
 }
 
 .description-div {
     margin-bottom: 40px;
+}
+
+html[data-theme="dark"] .description-div {
     color: white;
 }
 
+html[data-theme="light"] .description-div {
+    color: #000000;
+}
+
 .paragraph-div {
-    color: white;
     margin-bottom: 50px;
     font-size: small;
     max-width: 500px;
     line-height: 1.5;
+}
 
+html[data-theme="dark"] .paragraph-div {
+    color: white;
+}
+
+html[data-theme="light"] .paragraph-div {
+    color: #000000;
 }
 
 .links-div {
@@ -38,13 +65,37 @@ html {
 }
 
 .social-link {
-    color: white;
     text-decoration: none;
     font-weight: bold;
 
     &:hover {
         text-decoration: underline;
     }
+}
+
+html[data-theme="dark"] .social-link {
+    color: white;
+}
+
+html[data-theme="light"] .social-link {
+    color: black;
+}
+
+.theme-toggle {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    padding: 8px;
+    z-index: 1000;
+    transition: transform 0.2s ease;
+}
+
+.theme-toggle:hover {
+    transform: scale(1.2);
 }
 
 @media only screen and (max-width: 400px) {
@@ -60,7 +111,6 @@ html {
 
   .paragraph-div {
     max-width: 330px;
-    margin-left: 30px;
     margin-left: auto;
     margin-right: auto;
   }

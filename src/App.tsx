@@ -1,10 +1,27 @@
+import { useState, useEffect } from 'react'
 import './App.css'
+import { IconMoonFilled, IconSun } from '@tabler/icons-react'
 
 function App() {
+  const [isDark, setIsDark] = useState(() => {
+    const saved = localStorage.getItem('theme')
+    return saved ? saved === 'dark' : true
+  })
 
+  useEffect(() => {
+    localStorage.setItem('theme', isDark ? 'dark' : 'light')
+    document.documentElement.setAttribute('data-theme', isDark ? 'dark' : 'light')
+  }, [isDark])
 
   return (
     <>
+        <button 
+          className='theme-toggle'
+          onClick={() => setIsDark(!isDark)}
+          aria-label="Toggle light/dark mode"
+        >
+          {isDark ? <IconSun color='white' /> : <IconMoonFilled/>}
+        </button>
         <div className='main-div'>
             <div className='name-div'>
                 <h1>
