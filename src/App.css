@@ -46,3 +46,31 @@ html {
         text-decoration: underline;
     }
 }
+
+@media only screen and (min-width: 400px) and (max-width: 600px) {
+  .name-div {
+    margin-left: 30px;
+    font-size: x-small;
+  }
+
+  .description-div {
+    margin-left: 30px
+
+  }
+
+  .paragraph-div {
+    max-width: 330px;
+    margin-left: 30px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+    .main-div {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .social-link {
+    margin-left: 30px;
+  }
+}
