@@ -145,6 +145,7 @@ html[data-theme="light"] .switch-root {
 .switch-thumb {
     border-radius: 1rem;
     position: absolute;
+    transition: transform 250ms;
     right: 35px;
     top: 12px;
     width: 20px;
@@ -161,7 +162,6 @@ html[data-theme="dark"] .switch-thumb {
 
 html[data-switch-to="light"] .switch-thumb {
     transform: translateX(20px);
-    animation: name duration timing-function delay iteration-count direction fill-mode;
 }
 
 html[data-switch-to="dark"] .switch-thumb {
