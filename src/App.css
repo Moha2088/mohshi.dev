@@ -124,3 +124,47 @@ html[data-theme="light"] .social-link {
     margin-left: 30px;
   }
 }
+
+.switch-root {
+    border-radius: calc(infinity * 1px);
+    width: 50px;
+    height: 30px;
+    margin-left: auto;
+    cursor: pointer;
+}
+
+html[data-theme="dark"] .switch-root {
+    background-color: white;
+}
+
+html[data-theme="light"] .switch-root {
+    background-color: black;
+}
+
+
+.switch-thumb {
+    border-radius: 1rem;
+    position: absolute;
+    right: 35px;
+    top: 12px;
+    width: 20px;
+    height: 20px;
+}
+
+html[data-theme="light"] .switch-thumb {
+    background-color: white;
+}
+
+html[data-theme="dark"] .switch-thumb {
+    background-color: black;
+}
+
+html[data-switch-to="light"] .switch-thumb {
+    transform: translateX(20px);
+    animation: name duration timing-function delay iteration-count direction fill-mode;
+}
+
+html[data-switch-to="dark"] .switch-thumb {
+    transform: translateX(0);
+    
+}

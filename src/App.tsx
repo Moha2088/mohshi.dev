@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import './App.css'
 import { IconMoonFilled, IconSun } from '@tabler/icons-react'
+import { Switch } from './components/Switch'
 
 function App() {
   const [isDark, setIsDark] = useState(() => {
@@ -15,13 +16,19 @@ function App() {
 
   return (
     <>
-        <button 
+        {/* <button 
           className='theme-toggle'
           onClick={() => setIsDark(!isDark)}
           aria-label="Toggle light/dark mode"
         >
           {isDark ? <IconSun color='white' /> : <IconMoonFilled/>}
-        </button>
+        </button> */}
+
+        <Switch
+            isDark={isDark}
+            setIsDark={setIsDark}
+        />
+
         <div className='main-div'>
             <div className='name-div'>
                 <h1>
