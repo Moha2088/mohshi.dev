@@ -11,7 +11,6 @@ export function Switch(props: SwitchProps) {
 
     useEffect(() => {
         document.documentElement.setAttribute("data-switch-to", isDark ? "dark" : "light")
-        console.log("Last saved was: " + document.documentElement.getAttribute("data-switch-to"))
     }, [isDark])
 
     return (
