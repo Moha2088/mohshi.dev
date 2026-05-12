@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react'
 import './App.css'
-import { IconMoonFilled, IconSun } from '@tabler/icons-react'
 import { Switch } from './components/Switch'
 
 function App() {
