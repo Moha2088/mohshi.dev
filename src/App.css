@@ -16,8 +16,42 @@ html[data-theme="light"] {
 
 .main-div {
     margin-left: 300px;
-    margin-top: 130px;
+    margin-top: 130px;    
+}
+
+.badge {
+    background-color: rgb(242, 255, 221);
+    width: fit-content;
+    height: fit-content;
+    padding: 8px;
+    border-radius: calc(infinity * 1px);
+    font-size: x-small;
+    font-weight: bold;
+    color: rgb(99, 128, 54);
+    display: flex;
+    gap: 10px;
+}
+
+@keyframes color-fade-circle {
+    0% {
+        background-color: rgb(99, 128, 54);
+    }
     
+    50% {
+        background-color: rgb(186, 220, 135);
+    }
+
+    100% {
+        background-color: rgb(99, 128, 54);
+    }
+}
+
+.circle {
+    width: 10px;
+    height: 10px;
+    border-radius: calc(infinity * 1px);
+    animation: color-fade-circle 5s infinite;
+    margin-top: 1px;
 }
 
 .name-div {

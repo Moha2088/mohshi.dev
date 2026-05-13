@@ -30,6 +30,14 @@ function App() {
 
         <div className='main-div'>
             <div className='name-div'>
+                <div className='badge'>
+                    <div>
+                        Open for opportunities
+                    </div>
+                    
+                    <div className='circle' />
+                </div>
+
                 <h1>
                     Mohamed Shil
                 </h1>
