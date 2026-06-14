@@ -23,7 +23,7 @@ html[data-theme="light"] {
     background-color: rgb(242, 255, 221);
     width: fit-content;
     height: fit-content;
-    padding: 8px;
+    padding: 10px;
     border-radius: calc(infinity * 1px);
     font-size: x-small;
     font-weight: bold;
@@ -50,7 +50,7 @@ html[data-theme="light"] {
     width: 10px;
     height: 10px;
     border-radius: calc(infinity * 1px);
-    animation: color-fade-circle 5s infinite;
+    animation: color-fade-circle 3s infinite;
     margin-top: 1px;
 }
 
@@ -115,21 +115,143 @@ html[data-theme="light"] .social-link {
     color: black;
 }
 
-.theme-toggle {
+.theme-select {
     position: fixed;
     top: 20px;
     right: 20px;
-    background: none;
-    border: none;
-    font-size: 24px;
-    cursor: pointer;
-    padding: 8px;
     z-index: 1000;
+    font-family: inherit;
+    font-size: 14px;
+}
+
+.theme-select-trigger {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    min-width: 100px;
+    padding: 8px 12px;
+    border-radius: 6px;
+    border: 1px solid;
+    background: transparent;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 14px;
+    line-height: 1;
+    outline: none;
+    transition: box-shadow 0.15s ease;
+}
+
+.theme-select-trigger-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.theme-select-trigger:focus-visible {
+    box-shadow: 0 0 0 2px;
+}
+
+.theme-select-chevron {
+    opacity: 0.5;
     transition: transform 0.2s ease;
 }
 
-.theme-toggle:hover {
-    transform: scale(1.2);
+.theme-select-trigger[aria-expanded="true"] .theme-select-chevron {
+    transform: rotate(180deg);
+}
+
+.theme-select-content {
+    position: absolute;
+    top: calc(100% + 4px);
+    right: 0;
+    min-width: 100%;
+    border-radius: 6px;
+    border: 1px solid;
+    padding: 4px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.theme-select-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    padding: 6px 8px 6px 8px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.1s ease;
+}
+
+.theme-select-item-text {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.theme-select-check {
+    flex-shrink: 0;
+    opacity: 0.8;
+}
+
+html[data-theme="dark"] .theme-select-trigger {
+    color: #fafafa;
+    border-color: #333;
+}
+
+html[data-theme="dark"] .theme-select-trigger:hover {
+    background: #222;
+}
+
+html[data-theme="dark"] .theme-select-trigger:focus-visible {
+    box-shadow: 0 0 0 2px #fafafa;
+}
+
+html[data-theme="dark"] .theme-select-content {
+    background: #1a1a1a;
+    border-color: #333;
+}
+
+html[data-theme="dark"] .theme-select-item {
+    color: #fafafa;
+}
+
+html[data-theme="dark"] .theme-select-item:hover {
+    background: #262626;
+}
+
+html[data-theme="dark"] .theme-select-item[aria-selected="true"] {
+    background: #262626;
+}
+
+html[data-theme="light"] .theme-select-trigger {
+    color: #09090b;
+    border-color: #e2e8f0;
+}
+
+html[data-theme="light"] .theme-select-trigger:hover {
+    background: #f4f4f5;
+}
+
+html[data-theme="light"] .theme-select-trigger:focus-visible {
+    box-shadow: 0 0 0 2px #09090b;
+}
+
+html[data-theme="light"] .theme-select-content {
+    background: #ffffff;
+    border-color: #e2e8f0;
+}
+
+html[data-theme="light"] .theme-select-item {
+    color: #09090b;
+}
+
+html[data-theme="light"] .theme-select-item:hover {
+    background: #f4f4f5;
+}
+
+html[data-theme="light"] .theme-select-item[aria-selected="true"] {
+    background: #f4f4f5;
 }
 
 @media only screen and (max-width: 400px) {
@@ -159,46 +281,3 @@ html[data-theme="light"] .social-link {
   }
 }
 
-.switch-root {
-    border-radius: calc(infinity * 1px);
-    width: 50px;
-    height: 30px;
-    margin-left: auto;
-    cursor: pointer;
-}
-
-html[data-theme="dark"] .switch-root {
-    background-color: white;
-}
-
-html[data-theme="light"] .switch-root {
-    background-color: black;
-}
-
-
-.switch-thumb {
-    border-radius: 1rem;
-    position: absolute;
-    transition: transform 250ms;
-    right: 35px;
-    top: 12px;
-    width: 20px;
-    height: 20px;
-}
-
-html[data-theme="light"] .switch-thumb {
-    background-color: white;
-}
-
-html[data-theme="dark"] .switch-thumb {
-    background-color: black;
-}
-
-html[data-switch-to="light"] .switch-thumb {
-    transform: translateX(20px);
-}
-
-html[data-switch-to="dark"] .switch-thumb {
-    transform: translateX(0);
-    
-}
