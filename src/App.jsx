@@ -45,8 +45,8 @@ const experiences = [
     ],
   },
   {
-    year: "2018",
-    range: "May 2018 — Jun 2019",
+    year: "2024",
+    range: "Jul 2024 — Oct 2024",
     role: "Backend Developer — Internship",
     company: "BSS",
     location: "Denmark",
