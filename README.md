@@ -1,75 +1,45 @@
-# React + TypeScript + Vite
+# Mohamed Shil — Resume
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A single-page React resume, built with Vite.
 
-Currently, two official plugins are available:
+## Run locally
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
-
-## React Compiler
-
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
-
-Note: This will impact Vite dev & build performances.
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm install
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Then open the printed localhost URL in your browser.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## Build for production
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm run build
 ```
+
+This outputs a static site to the `dist/` folder — a plain folder of HTML/CSS/JS
+that can be hosted anywhere.
+
+## Deploy
+
+**Vercel**
+1. Push this folder to a GitHub repo.
+2. Go to vercel.com → "Add New Project" → import the repo.
+3. Vercel auto-detects Vite; leave defaults (build command `npm run build`,
+   output directory `dist`) and click Deploy.
+
+**Netlify**
+1. Push this folder to a GitHub repo (or drag-and-drop the `dist/` folder
+   after running `npm run build` into netlify.com/drop).
+2. If connecting a repo: build command `npm run build`, publish directory `dist`.
+
+**GitHub Pages**
+1. Run `npm run build`.
+2. Push the contents of `dist/` to a `gh-pages` branch (or use the
+   `gh-pages` npm package), and enable Pages on that branch in your repo settings.
+
+## Editing content
+
+All resume content (name, experience, education, skills, etc.) lives in
+`src/App.jsx` as plain JS arrays near the top of the file — edit those directly
+and the layout will update automatically.
