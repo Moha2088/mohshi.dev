@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 const experiences = [
   {
@@ -74,13 +74,42 @@ const languages = [
 ];
 
 export default function Resume() {
+  const [isDark, setIsDark] = useState(() => {
+    try {
+      return localStorage.getItem("resume-theme") === "dark";
+    } catch {
+      return false;
+    }
+  });
+
+  useEffect(() => {
+    try {
+      localStorage.setItem("resume-theme", isDark ? "dark" : "light");
+    } catch {
+      // The toggle still works when storage is unavailable.
+    }
+  }, [isDark]);
+
   return (
-    <div style={styles.page}>
+    <div style={{ ...styles.page, ...(isDark ? darkTheme : lightTheme) }}>
+      <button
+        type="button"
+        className="theme-toggle"
+        style={styles.themeToggle}
+        onClick={() => setIsDark((current) => !current)}
+        aria-pressed={isDark}
+        aria-label={`Switch to ${isDark ? "light" : "dark"} mode`}
+      >
+        <span aria-hidden="true">{String.fromCharCode(isDark ? 9728 : 9790)}</span>
+        {isDark ? "Light mode" : "Dark mode"}
+      </button>
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap');
         * { box-sizing: border-box; }
         .resume-root { font-family: 'IBM Plex Sans', sans-serif; }
         .resume-root a { color: inherit; }
+        .resume-root a:hover { color: var(--accent); }
+        .theme-toggle:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
       `}</style>
 
       <div className="resume-root" style={styles.sheet}>
@@ -93,9 +122,13 @@ export default function Resume() {
           <div style={styles.contact}>
             <span>maxamed-14@outlook.dk</span>
             <span>·</span>
-            <span>github.com/Moha2088</span>
+            <a href="https://github.com/Moha2088" target="_blank" rel="noopener noreferrer">
+              github.com/Moha2088
+            </a>
             <span>·</span>
-            <span>linkedin.com/in/mohamed-shil</span>
+            <a href="https://linkedin.com/in/mohamed-shil" target="_blank" rel="noopener noreferrer">
+              linkedin.com/in/mohamed-shil
+            </a>
             <span>·</span>
             <span>Odense, DK</span>
           </div>
@@ -220,18 +253,59 @@ const ACCENT = "#234E44";
 const RULE = "#DADED8";
 const PAPER = "#F6F5F1";
 
+const lightTheme = {
+  "--page-bg": PAPER,
+  "--sheet-bg": PAPER,
+  "--ink": INK,
+  "--muted": MUTED,
+  "--accent": ACCENT,
+  "--rule": RULE,
+  "--body-text": "#33383B",
+};
+
+const darkTheme = {
+  "--page-bg": "#151917",
+  "--sheet-bg": "#151917",
+  "--ink": "#F3F1E9",
+  "--muted": "#A7B0A5",
+  "--accent": "#8FA9D6",
+  "--rule": "#3A4840",
+  "--body-text": "#D6DDD5",
+};
+
 const styles = {
   page: {
-    background: PAPER,
+    background: "var(--page-bg)",
     minHeight: "100vh",
     padding: "2.5rem 1rem",
     display: "flex",
     justifyContent: "center",
+    position: "relative",
+    transition: "background 180ms ease",
   },
   sheet: {
     width: "100%",
     maxWidth: "700px",
-    color: INK,
+    color: "var(--ink)",
+    background: "var(--sheet-bg)",
+    transition: "background 180ms ease, color 180ms ease",
+  },
+  themeToggle: {
+    position: "absolute",
+    top: "1rem",
+    right: "1rem",
+    display: "inline-flex",
+    alignItems: "center",
+    gap: "0.45rem",
+    border: "1px solid var(--rule)",
+    borderRadius: "999px",
+    padding: "0.45rem 0.75rem",
+    background: "var(--sheet-bg)",
+    color: "var(--ink)",
+    fontFamily: "'IBM Plex Mono', monospace",
+    fontSize: "0.68rem",
+    cursor: "pointer",
+    transition: "background 180ms ease, color 180ms ease, border-color 180ms ease",
   },
   header: {
     display: "flex",
@@ -250,7 +324,7 @@ const styles = {
   title: {
     margin: "0.25rem 0 0",
     fontSize: "0.95rem",
-    color: ACCENT,
+    color: "var(--accent)",
     fontWeight: 500,
   },
   contact: {
@@ -259,18 +333,18 @@ const styles = {
     flexWrap: "wrap",
     fontFamily: "'IBM Plex Mono', monospace",
     fontSize: "0.72rem",
-    color: MUTED,
+    color: "var(--muted)",
     letterSpacing: "0.01em",
   },
   headerRule: {
     height: "1px",
-    background: INK,
+    background: "var(--ink)",
     marginTop: "1.25rem",
   },
   summary: {
     fontSize: "0.88rem",
     lineHeight: 1.6,
-    color: "#33383B",
+    color: "var(--body-text)",
     margin: 0,
     maxWidth: "56ch",
   },
@@ -285,14 +359,14 @@ const styles = {
     fontSize: "0.7rem",
     letterSpacing: "0.15em",
     textTransform: "uppercase",
-    color: ACCENT,
+    color: "var(--accent)",
     fontWeight: 500,
     whiteSpace: "nowrap",
   },
   sectionLabelLine: {
     flex: 1,
     height: "1px",
-    background: RULE,
+    background: "var(--rule)",
   },
   timeline: {
     position: "relative",
@@ -303,7 +377,7 @@ const styles = {
     top: "0.4rem",
     bottom: "0.4rem",
     width: "1px",
-    background: RULE,
+    background: "var(--rule)",
   },
   timelineRow: {
     display: "flex",
@@ -320,7 +394,7 @@ const styles = {
   timelineYear: {
     fontFamily: "'IBM Plex Mono', monospace",
     fontSize: "0.72rem",
-    color: MUTED,
+    color: "var(--muted)",
     marginTop: "0.15rem",
     marginRight: "0.5rem",
   },
@@ -331,9 +405,9 @@ const styles = {
     width: "9px",
     height: "9px",
     borderRadius: "50%",
-    background: ACCENT,
-    border: `2px solid ${PAPER}`,
-    boxShadow: `0 0 0 1px ${ACCENT}`,
+    background: "var(--accent)",
+    border: "2px solid var(--sheet-bg)",
+    boxShadow: "0 0 0 1px var(--accent)",
   },
   timelineContent: {
     flex: 1,
@@ -354,21 +428,21 @@ const styles = {
   range: {
     fontFamily: "'IBM Plex Mono', monospace",
     fontSize: "0.72rem",
-    color: MUTED,
+    color: "var(--muted)",
     whiteSpace: "nowrap",
   },
   company: {
     margin: "0.15rem 0 0.6rem",
     fontSize: "0.88rem",
-    color: ACCENT,
+    color: "var(--accent)",
     fontWeight: 500,
   },
   location: {
-    color: MUTED,
+    color: "var(--muted)",
     fontWeight: 400,
   },
   dot: {
-    color: MUTED,
+    color: "var(--muted)",
   },
   bullets: {
     margin: 0,
@@ -380,7 +454,7 @@ const styles = {
   bullet: {
     fontSize: "0.87rem",
     lineHeight: 1.5,
-    color: "#33383B",
+    color: "var(--body-text)",
   },
   eduRow: {
     display: "flex",
@@ -396,12 +470,12 @@ const styles = {
   },
   languageItem: {
     fontSize: "0.88rem",
-    color: "#33383B",
+    color: "var(--body-text)",
   },
   skills: {
     fontSize: "0.87rem",
     lineHeight: 1.6,
-    color: "#33383B",
+    color: "var(--body-text)",
     margin: 0,
-  },
+  }
 };
