@@ -5,9 +5,10 @@ import { useState, useEffect } from 'react';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import Home from './pages/Home';
-import About from './pages/Experience';
+import Experience from './pages/Experience';
 import ScrollToTop from './utils/ScrollToTop';
 import { Layout } from './components/Layout';
+import About from './pages/About';
 
 const pageVariants = {
   initial: {
@@ -66,7 +67,8 @@ const App = () => {
                 >
                   <Routes location={location}>
                     <Route path="/" element={<Home />} />
-                    <Route path="/experience" element={<About />} />
+                    <Route path="/experience" element={<Experience />} />
+                    <Route path='/about' element={<About />} />
                   </Routes>
                 </motion.div>
               </AnimatePresence>
