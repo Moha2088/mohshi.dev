@@ -4,9 +4,8 @@ import { FadeInSection } from "../utils/FadeInSection";
 import { ExperienceTab, ExperienceTabProps } from "../components/ExperienceTab";
 
 
-const About = () => {
+const Experience = () => {
     usePageTitle("Experience");
-
 
     const experiences: ExperienceTabProps[] = [
         {
@@ -14,30 +13,33 @@ const About = () => {
             duration: "Jan 2026 — Mar 2026",
             position: "Full Stack Developer",
             company: "JOYN ApS",
-            text: ""
+            text: "",
+            skills: []
         },
         {
             id: 3,
             duration: "Oct 2025",
             position: "Developer",
             company: "Ignite Odense",
-            text: "Monitoring performance and errors, for an app used by attendees, during one of the largest startup networking events in Odense."
+            text: "Monitoring performance and errors, for an app used by attendees, during one of the largest startup networking events in Odense.",
+            skills: []
         },
         {
             id: 2,
             duration: "Sep 2025 — Dec 2025",
             position: "Full Stack Developer Intern",
             company: "JOYN ApS",
-            text: `Developed components and built custom hooks with Next.js, TypeScript and Tanstack Query. 
-            Developed endpoints with Fastify and integration tests with Jest.`
+            text: `Developed components and built custom hooks with Next.js, TypeScript and Tanstack Query.
+            Developed endpoints with Fastify and integration tests with Jest.`,
+            skills: ["Fastify", "Node.js", "TypeScript", "React", "Next.js", "PostgreSQL", "PostHog", "Jest"]
         },
         {
-            
             id: 1,
             duration: "Jul 2024 - Oct 2024",
             position: "Backend Developer Intern",
             company: "BSS",
-            text: "API Development with Azure, C#/.NET and EF Core."
+            text: "API Development with Azure, C#/.NET and EF Core.",
+            skills: ["C#", ".NET", "Entity Framework"]
         },
     ];
 
@@ -59,6 +61,7 @@ const About = () => {
                             duration={exp.duration}
                             company={exp.company}
                             text={exp.text}
+                            skills={exp.skills}
                         />
                     </div>
                 ))}
@@ -67,4 +70,4 @@ const About = () => {
     );
 };
 
-export default About;
+export default Experience;

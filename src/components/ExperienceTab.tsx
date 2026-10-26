@@ -1,3 +1,4 @@
+import { SkillLabel } from "./SkillLabel"
 
 export interface ExperienceTabProps {
     id?: number
@@ -5,11 +6,12 @@ export interface ExperienceTabProps {
     position: string
     company: string,
     text: string
+    skills: string[]
 }
 
 
 export function ExperienceTab(props: ExperienceTabProps) {
-    const { duration, text, position, company } = props
+    const { duration, text, position, company, skills } = props
 
     return (
         <div className="w-50 h-fit rounded-2xl transition-colors hover:bg-stone-100 dark:hover:bg-stone-900">
@@ -30,10 +32,15 @@ export function ExperienceTab(props: ExperienceTabProps) {
                     </div>
                 </div>
 
-                <div className="text-xs">
+                <div className="text-xs mb-10">
                     {text}
                 </div>
                 
+                <div className="flex gap-3">
+                    {skills.map((s) => (
+                        <SkillLabel skill={s} />
+                    ))}
+                </div>                
             </div>
         </div>
     )

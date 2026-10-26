@@ -15,7 +15,6 @@ export function ParticleMorph() {
     }
 
     const controller = createParticleMorph(canvas, stage);
-
     return () => controller.dispose();
   }, []);
 

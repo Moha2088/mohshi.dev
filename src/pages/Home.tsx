@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 import { TypeAnimation } from 'react-type-animation';
 import { usePageTitle } from '../hooks/usePageTitle';
 import { FadeInSection } from '../utils/FadeInSection';
-import { ParticleMorph } from '../framer/ParticleMorph';
+import { ParticleMorph } from '../three-js/particle-effect/ParticleMorph';
 
 const Home = () => {
   usePageTitle('');  // Empty string for home page
